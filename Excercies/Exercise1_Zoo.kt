@@ -1,19 +1,12 @@
-// SE 3242: Android Application Development
 // Week 2: Kotlin Essentials - Exercise 1
 // Exercise 1: Model a Zoo
 
-// ========================================
-// Abstract Animal Class
-// ========================================
 
 abstract class Animal(val name: String) {
     abstract val legs: Int
     abstract fun makeSound()
 }
 
-// ========================================
-// Concrete Animal Classes
-// ========================================
 
 class Dog(name: String) : Animal(name) {
     override val legs: Int = 4
@@ -31,9 +24,6 @@ class Cat(name: String) : Animal(name) {
     }
 }
 
-// ========================================
-// Main Function
-// ========================================
 
 fun main() {
     println("=== Exercise 1: Model a Zoo ===\n")

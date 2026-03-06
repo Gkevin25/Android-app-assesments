@@ -1,18 +1,11 @@
-// SE 3242: Android Application Development
 // Week 2: Kotlin Essentials - Exercise 3
 // Exercise 3: Drawable Shapes with Interfaces
 
-// ========================================
-// Interface Definition
-// ========================================
 
 interface Drawable {
     fun draw()
 }
 
-// ========================================
-// Circle Class
-// ========================================
 
 class Circle(val radius: Int) : Drawable {
     override fun draw() {
@@ -37,9 +30,6 @@ class Circle(val radius: Int) : Drawable {
     }
 }
 
-// ========================================
-// Square Class
-// ========================================
 
 class Square(val sideLength: Int) : Drawable {
     override fun draw() {
@@ -53,9 +43,6 @@ class Square(val sideLength: Int) : Drawable {
     }
 }
 
-// ========================================
-// Main Function
-// ========================================
 
 fun main() {
     println("=== Exercise 3: Drawable Shapes with Interfaces ===\n")
@@ -73,7 +60,6 @@ fun main() {
         println()
     }
     
-    // Additional demonstration
     println("--- Drawing Different Sizes ---")
     val moreShapes: List<Drawable> = listOf(
         Square(3),

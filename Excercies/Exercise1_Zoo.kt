@@ -39,9 +39,7 @@ fun main() {
         animal.makeSound()
     }
     
-    // Additional demonstration
-    println("\n--- Additional Info ---")
-    animals.forEach { animal ->
+
         println("${animal.name} has ${animal.legs} legs")
     }
 }

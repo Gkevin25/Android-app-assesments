@@ -43,8 +43,7 @@ fun simulateApiCall() {
         NetworkState.Success("Data retrieved successfully"),
     )
     
-    apiStates.forEach { state ->
-        Thread.sleep(500) // Simulate delay
+   
         handleState(state)
     }
 }

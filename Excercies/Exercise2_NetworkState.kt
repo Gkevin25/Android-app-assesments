@@ -1,10 +1,6 @@
-// SE 3242: Android Application Development
 // Week 2: Kotlin Essentials - Exercise 2
 // Exercise 2: Model Network Request State with Sealed Class
 
-// ========================================
-// Sealed Class Definition
-// ========================================
 
 sealed class NetworkState {
     object Loading : NetworkState()
@@ -12,9 +8,6 @@ sealed class NetworkState {
     data class Error(val message: String) : NetworkState()
 }
 
-// ========================================
-// State Handler Function
-// ========================================
 
 fun handleState(state: NetworkState) {
     when (state) {
@@ -24,9 +17,6 @@ fun handleState(state: NetworkState) {
     }
 }
 
-// ========================================
-// Main Function
-// ========================================
 
 fun main() {
     println("=== Exercise 2: Model Network Request State with Sealed Class ===\n")
@@ -46,9 +36,6 @@ fun main() {
     simulateApiCall()
 }
 
-// ========================================
-// Additional Helper Function
-// ========================================
 
 fun simulateApiCall() {
     val apiStates = listOf(

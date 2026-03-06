@@ -54,10 +54,7 @@ fun main() {
         Circle(3)
     )
     
-    // Draw each shape
-    shapes.forEach { shape ->
-        shape.draw()
-        println()
+    
     }
     
     println("--- Drawing Different Sizes ---")

@@ -5,3 +5,6 @@ Description: This is a mobile application developed to improve classroom attenda
 After scanning, the application verifies the student’s location using GPS to ensure they are physically present in the classroom. Attendance is recorded only if the student is within the allowed classroom area.
 
 The system helps reduce manual attendance errors and prevents fake or remote check-ins.
+
+
+Spring 2026

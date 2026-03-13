@@ -1,18 +1,3 @@
-// SE 3242: Android Application Development
-// Week 3: Kotlin Essentials - Exercise 3
-// Exercise 3: Product List with Details (Jetpack Compose App)
-
-/*
- * NOTE: This is a complete Jetpack Compose application.
- * To run this code, you need an Android project with Compose dependencies.
- * 
- * Required dependencies in build.gradle:
- * implementation "androidx.compose.ui:ui:1.5.0"
- * implementation "androidx.compose.material3:material3:1.1.0"
- * implementation "androidx.navigation:navigation-compose:2.7.0"
- * implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0"
- */
-
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -34,9 +19,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
-// ========================================
+
 // Data Model
-// ========================================
+
 
 data class Product(
     val id: Int,
@@ -45,9 +30,9 @@ data class Product(
     val description: String
 )
 
-// ========================================
+
 // ViewModel
-// ========================================
+
 
 class ProductViewModel : ViewModel() {
     // Hardcoded list of products
@@ -83,9 +68,9 @@ class ProductViewModel : ViewModel() {
     }
 }
 
-// ========================================
+
 // Main App Composable
-// ========================================
+
 
 @Composable
 fun ProductApp(viewModel: ProductViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
@@ -127,9 +112,8 @@ fun ProductApp(viewModel: ProductViewModel = androidx.lifecycle.viewmodel.compos
     }
 }
 
-// ========================================
 // Product List Screen
-// ========================================
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -222,9 +206,9 @@ fun ProductListItem(
     }
 }
 
-// ========================================
+
 // Product Detail Screen
-// ========================================
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -468,16 +452,4 @@ fun CartItem(product: Product) {
     }
 }
 
-// ========================================
-// Missing Icons (Add these imports in real project)
-// ========================================
 
-// These would normally come from androidx.compose.material.icons.filled
-object Icons {
-    object Default {
-        val ShoppingCart = androidx.compose.material.icons.Icons.Default.ShoppingCart
-        val ChevronRight = androidx.compose.material.icons.Icons.Default.ChevronRight
-        val ArrowBack = androidx.compose.material.icons.Icons.Default.ArrowBack
-        val AddShoppingCart = androidx.compose.material.icons.Icons.Default.AddShoppingCart
-    }
-}

@@ -1,10 +1,3 @@
-// SE 3242: Android Application Development
-// Week 3: Kotlin Essentials - Exercise 1
-// Exercise 1: Generic Function with Constraints
-
-// ========================================
-// Generic Function: maxOf
-// ========================================
 
 /**
  * Returns the maximum element from a list.
@@ -41,9 +34,6 @@ fun <T : Comparable<T>> maxOfManual(list: List<T>): T? {
     return max
 }
 
-// ========================================
-// Main Function - Testing
-// ========================================
 
 fun main() {
     println("=== Exercise 1: Generic Function with Constraints ===\n")
@@ -92,27 +82,4 @@ fun main() {
     println("maxOfManual:     ${maxOfManual(testList)}")
 }
 
-// ========================================
-// Additional Examples
-// ========================================
 
-// Custom class that implements Comparable
-data class Person(val name: String, val age: Int) : Comparable<Person> {
-    override fun compareTo(other: Person): Int {
-        return this.age.compareTo(other.age)
-    }
-    
-    override fun toString(): String = "$name (age $age)"
-}
-
-fun demonstrateCustomComparable() {
-    println("\n--- Custom Comparable Example ---")
-    val people = listOf(
-        Person("Alice", 30),
-        Person("Bob", 25),
-        Person("Charlie", 35)
-    )
-    
-    println("People: $people")
-    println("Oldest person: ${maxOf(people)}")
-}

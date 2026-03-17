@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881156959827",
+    "project_id": "smart-attendance-logger",
+    "storage_bucket": "smart-attendance-logger.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881156959827:android:a5b0c5c8577b6af5f860a6",
+        "android_client_info": {
+          "package_name": "com.example.smart_attendance_logger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5XcOq-f9C06DOC-1ZfvdYWWvSW9e0BrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

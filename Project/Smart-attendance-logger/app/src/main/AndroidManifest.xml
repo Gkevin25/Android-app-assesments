@@ -27,6 +27,16 @@
         <activity android:name=".teacher.AttendanceListActivity"/>
         <activity android:name=".student.StudentDashboardActivity"/>
         <activity android:name=".student.ScanQRActivity"/>
+        <activity android:name=".student.StudentHistoryActivity"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
 
     </application>
 </manifest>

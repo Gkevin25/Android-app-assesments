@@ -39,5 +39,13 @@
         android:text="Logout"
         android:padding="16dp"
         style="@style/Widget.MaterialComponents.Button.TextButton"/>
+    <Button
+        android:id="@+id/btnViewHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📋 My Attendance History"
+        android:padding="16dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

@@ -85,6 +85,12 @@ class ScanQRActivity : AppCompatActivity() {
                     showStatus("❌ Invalid QR code token.", isError = true)
                     return@addOnSuccessListener
                 }
+                val expiryTime = doc.getLong("expiryTime") ?: 0L
+                if (System.currentTimeMillis() > expiryTime) {
+                    binding.progressBar.visibility = View.GONE
+                    showStatus("⛔ This QR code has expired!\nAsk your teacher to generate a new one.", isError = true)
+                    return@addOnSuccessListener
+                }
 
                 // Token matches — now get GPS location
                 val classLat = doc.getDouble("latitude") ?: 0.0

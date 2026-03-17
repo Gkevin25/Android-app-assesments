@@ -8,5 +8,6 @@ data class ClassSession(
     val longitude: Double = 0.0,
     val radiusMeters: Double = 50.0,
     val timestamp: Long = 0L,
-    val token: String = ""      // random token embedded in QR
+    val token: String = "",
+    val expiryTime: Long = 0L // random token embedded in QR
 )

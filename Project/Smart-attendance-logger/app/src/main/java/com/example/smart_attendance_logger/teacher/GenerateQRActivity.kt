@@ -83,7 +83,8 @@ class GenerateQRActivity : AppCompatActivity() {
     private fun createSessionAndShowQR(className: String) {
         val teacherId = auth.currentUser?.uid ?: return
         val sessionId = UUID.randomUUID().toString()
-        val token = UUID.randomUUID().toString().take(8)  // short unique token
+        val token = UUID.randomUUID().toString().take(8)
+        val expiryTime = System.currentTimeMillis() + (5 * 60 * 1000) // 5 minutes from now
 
         val session = ClassSession(
             sessionId = sessionId,
@@ -93,34 +94,53 @@ class GenerateQRActivity : AppCompatActivity() {
             longitude = classLongitude,
             radiusMeters = 50.0,
             timestamp = System.currentTimeMillis(),
-            token = token
+            token = token,
+            expiryTime = expiryTime          // ← new field
         )
 
-        // Save session to Firestore
         db.collection("sessions").document(sessionId).set(session)
             .addOnSuccessListener {
-                // QR content = sessionId + token (student app will parse this)
                 val qrContent = "$sessionId|$token"
-                showQRCode(qrContent, className, sessionId)
+                showQRCode(qrContent, className, sessionId, expiryTime)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to create session: ${it.message}", Toast.LENGTH_LONG).show()
             }
     }
 
-    private fun showQRCode(content: String, className: String, sessionId: String) {
+    private fun showQRCode(content: String, className: String, sessionId: String, expiryTime: Long) {
         try {
             val encoder = BarcodeEncoder()
             val bitmap: Bitmap = encoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 600, 600)
 
             binding.ivQRCode.setImageBitmap(bitmap)
             binding.ivQRCode.visibility = View.VISIBLE
-
-            binding.tvSessionInfo.text = "Class: $className\nSession ID: ${sessionId.take(8)}...\nShow this to students"
             binding.tvSessionInfo.visibility = View.VISIBLE
 
             Toast.makeText(this, "QR Code ready! Show it to students.", Toast.LENGTH_LONG).show()
-        } catch (e: WriterException) {
+
+            // Countdown timer — updates every second
+            object : android.os.CountDownTimer(expiryTime - System.currentTimeMillis(), 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val minutes = millisUntilFinished / 1000 / 60
+                    val seconds = (millisUntilFinished / 1000) % 60
+                    binding.tvSessionInfo.text =
+                        "Class: $className\n" +
+                                "Session: ${sessionId.take(8)}...\n" +
+                                "⏱ Expires in: %02d:%02d".format(minutes, seconds)
+                }
+
+                override fun onFinish() {
+                    // Grey out the QR code when expired
+                    binding.ivQRCode.alpha = 0.3f
+                    binding.tvSessionInfo.text = "⛔ QR Code expired!\nGenerate a new one."
+                    binding.tvSessionInfo.setTextColor(getColor(android.R.color.holo_red_dark))
+                    binding.btnGenerateQR.isEnabled = true
+                    binding.btnGenerateQR.text = "Generate New QR Code"
+                }
+            }.start()
+
+        } catch (e: com.google.zxing.WriterException) {
             Toast.makeText(this, "Failed to generate QR: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }

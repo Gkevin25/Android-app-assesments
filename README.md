@@ -268,10 +268,7 @@ This project was developed as an academic assessment for an Android App Developm
 
 ---
 
-## 👤 Author
 
-**Your Name**
-- GitHub: [@your-username](https://github.com/your-username)
 
 ---
 
